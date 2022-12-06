@@ -3,7 +3,7 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 /*
-Fundtions
+Functions
 
 1. Default with no key word - requires gas
 2. view - no gas
@@ -28,7 +28,7 @@ contract ViewAndPureFunctions {
 
     /*
     pure
-    1. does NOT read or write write to a state
+    1. does NOT read or write to a state
     2. does NOT require gas
     */
     function add(uint _x, uint _y) public pure returns (uint256){

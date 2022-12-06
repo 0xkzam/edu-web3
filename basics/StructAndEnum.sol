@@ -44,6 +44,7 @@ contract StructAndEnum {
         task.status = Status.TODO;
         tasks[_id] = task;
     }
+    
     function getTask(uint256 _id) public view returns (string memory, string memory, Status){
         return (tasks[_id].title, tasks[_id].descritpion, tasks[_id].status);
     }

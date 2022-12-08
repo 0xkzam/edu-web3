@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity >=0.7.0 <0.9.0;
+pragma solidity ^0.8.10;
 
 import "hardhat/console.sol";
 
@@ -30,15 +30,15 @@ interface MiniDEX {
 }
 
 /*
- Implementation
+* Implementation
 */
 contract DEX {
     function swap(
         address addressA,
         address addressB,
         uint256 amount
-    ) external {
-        console.log("Transferred %s", amount);
+    ) external view{
+        console.log("DEX Impl: Transferred %s", amount);
     }
 }
 

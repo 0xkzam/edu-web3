@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity ^0.8.10;
+pragma solidity ^0.7.6;
 
 import "hardhat/console.sol";
 
@@ -43,6 +43,11 @@ contract DEX {
 }
 
 contract Test{
+
+    function test() public{
+        address d = address(new DEX());
+        test(d);
+    }
 
     function test(address _dexContractAddr) public {
         MiniDEX(_dexContractAddr).swap(address(0),address(0), 50000);

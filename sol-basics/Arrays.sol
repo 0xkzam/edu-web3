@@ -23,10 +23,8 @@ contract Arrays {
     function test(uint256[] memory _memoryArr) public {
         arr2 = _memoryArr; // Copies the whole array to arr2 (from Memory to Storage)
 
-        arr2.push(23).push(34).push(45).push(56);
+        arr2.push(23);
         uint256[] storage arr4 = arr2; // Storage to Storage ie. just a pointer
-
-
 
         uint256[] memory arr5 = arr2;
     }
@@ -43,5 +41,29 @@ contract Arrays {
         arr2.push(30);
         //arr2.pop();
         console.log("Length of arr2: ", arr2.length);
+    }
+
+    /*
+    * 1. Only fixed length arrays are allowed when initializing within functions
+    * 2. You can have storage array pointing to another storage(state) array
+    */
+    function testLocalMultiDimArrays() public pure returns (string[][] memory){
+            string[][] memory d2 = new string[][](3); // 3 Arrays and elements of those arrays are also arrays
+            d2[0] = new string[](2); // Must be initialized
+            d2[1] = new string[](4); // Must be initialized
+            d2[2] = new string[](2); // Must be initialized
+
+            d2[0][0] = "0-A";
+            d2[0][1] = "0-B";
+
+            d2[1][0] = "1-C";
+            d2[1][1] = "1-D";
+            d2[1][2] = "1-X";
+            d2[1][3] = "1-Y";
+
+            d2[2][0] = "2-P";
+            d2[2][1] = "2-Q";
+
+            return d2;
     }
 }

@@ -1,21 +1,32 @@
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity ^0.8.10;
+pragma solidity ^0.8.0;
 
 import "hardhat/console.sol";
 
+/*
+* https://docs.soliditylang.org/en/latest/types.html#address
+* https://fravoll.github.io/solidity-patterns/secure_ether_transfer.html
+*/
+
 contract EthSender {
     /*
-    Send some ETH to _to address
+    Send some ETH to a given address (CA or EOA)
 
     Note the 'payable' keyword (both the address & the function)
-    address payable: an address you can send Ether to
-    send,trasnfer,call,deligatecall,staticcall
 
-    msg.data (bytes calldata): complete calldata
-    msg.sender (address): sender of the message (current call)
-    msg.sig (bytes4): first four bytes of the calldata (i.e. function identifier)
-    msg.value (uint): number of wei sent with the message
+    address payable: an address you can send Ether to
+
+    Methods
+    1. send - fixed gas
+    2. transfer - fixed gas
+    3. call,delegatecall,staticcall - gas adjustable & lower level functions
+
+    Important global variables
+    1. msg.data (bytes calldata): complete calldata
+    2. msg.sender (address): sender of the message (current call)
+    3. msg.sig (bytes4): first four bytes of the calldata (i.e. function identifier)
+    4. msg.value (uint): number of wei sent with the message
     */
     function sendTo(address payable _to) public payable {
         uint256 amount = msg.value;
@@ -32,7 +43,7 @@ contract EthSender {
 
 
 /*
-This is used when contract needs to receive ETH 
+* This is used when contract needs to receive ETH 
 */
 contract EthReceiver {
     /* 

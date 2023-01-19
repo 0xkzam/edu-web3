@@ -28,7 +28,7 @@ contract EthSender {
     3. msg.sig (bytes4): first four bytes of the calldata (i.e. function identifier)
     4. msg.value (uint): number of wei sent with the message
     */
-    function sendTo(address payable _to) public payable {
+    function sendTo(address payable _to) public payable{
         uint256 amount = msg.value;
 
         console.log("From account balance: %s", msg.sender.balance);
@@ -37,6 +37,7 @@ contract EthSender {
 
         //can omit the data variable since it's not used
         (bool success, bytes memory data) = _to.call{value: amount}("");
+       
         require(success, "Transfer unsuccessful");
     }
 }

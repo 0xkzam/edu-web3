@@ -12,6 +12,7 @@ Modifiers - pieces of code that can be run before or after any other function ca
 */
 contract Modifiers {
     address owner;
+    bool private lock;
 
     constructor() {
         owner = msg.sender;
@@ -27,6 +28,12 @@ contract Modifiers {
         //address(0) = zero address (0x0)
         require(_addr != address(0), "Invalid");        
         _;
+    }
+
+    modifier reentracyLock(){
+        lock = true;
+        _;
+        lock = false;
     }
 
     function someFunction1() public onlyOwner {

@@ -27,6 +27,21 @@ contract ViewAndPureFunctions {
     }
 
     /*
+    * Calling a view function within another view function ==> consumes NO gas
+    */
+    function viewNoGas() public view returns (uint256){
+        return 33 + getX();        
+    }
+
+    /*
+    * Calling a view function within a none view function ==> consumes gas
+    */
+    function viewGas() public returns (uint256){
+        x = 12;
+        return 33 + getX();        
+    }
+
+    /*
     pure
     1. does NOT read or write to a state
     2. does NOT require gas

@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 
 /*
  * https://docs.soliditylang.org/en/latest/control-structures.html#error-handling-assert-require-revert-and-exceptions
+ * https://stackoverflow.com/questions/48847407/assert-vs-require-within-solidity
  */
 
 contract Test {

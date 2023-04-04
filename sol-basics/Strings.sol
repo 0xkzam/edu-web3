@@ -15,6 +15,10 @@ library Strings {
       }
     }
 
+    function compare(string memory _str1, string memory _str2) public pure returns (bool){
+       return keccak256(bytes(_str1)) == keccak256(bytes(_str2));
+    }
+
 
     /*
     * https://ethereum.stackexchange.com/questions/11247/keccak256parameter-how-to-pass-a-string-to-be-hashed
